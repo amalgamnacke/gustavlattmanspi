@@ -4,8 +4,16 @@ from lxml import etree
 
 from http_scraper import HttpScraper
 
+MODE_ALL_OFF = 0
+MODE_ALL_ON = 1
+MODE_DAYLIGHT_AUTO = 2
+MODE_ECO_AUTO = 3
+
 class LightAutomation:
-	def __init__(self):		
+	def __init__(self):
+		self.is_light_module_turned_on = False
+		self.modes = MODE_ECO_AUTO
+		
 		self.http_scraper = HttpScraper()
 
 		self.fallback_sunrise = "07:30" 
@@ -45,5 +53,20 @@ class LightAutomation:
 			return False
 
 	def turn_light_module_on(self):
-		#kolla hur movement_.py hpysslar
-		pass
+		self.is_light_module_turned_on = true
+		while self.is_light_module_turned_on:
+
+			# Exit this loop
+			if MODE_ALL_OFF == self.modes:
+				self.is_light_module_turned_on = false
+				continue
+			
+			# Be sure to turn on all lights at 100Â%
+			if MODE_ALL_ON == self.modes:
+				#relay module, light all up if not lighted up already
+				continue
+			
+			if MODE_DAYLIGHT_AUTO == self.modes:
+				#asd
+				pass
+	
